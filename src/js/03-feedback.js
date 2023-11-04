@@ -9,7 +9,7 @@ if(localStorage.getItem("feedback-form-state")) {
 
 const feedback = {};
 
-const handleInput = e => {
+const handleInput = () => {
   const { email, message } = form.elements;
 
   const feedback = {
@@ -22,4 +22,13 @@ const handleInput = e => {
   localStorage.setItem("feedback-form-state", JSON.stringify(feedback));
 }
 
+const handleSubmit = e => {
+  e.preventDefault();
+
+  console.log(feedback);
+  form.reset();
+  localStorage.setItem("feedback-form-state", "");
+}
+
 form.addEventListener('input', handleInput);
+form.addEventListener('submit', handleSubmit);
