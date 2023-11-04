@@ -5,9 +5,9 @@ if(localStorage.getItem("feedback-form-state")) {
 
   form.elements.email.value = getValues.email;
   form.elements.message.value = getValues.message;
-  // console.log(form.elements.email.value);
-  // console.log(form.elements.message.value);
 }
+
+const feedback = {};
 
 const handleInput = e => {
   const { email, message } = form.elements;
@@ -21,3 +21,5 @@ const handleInput = e => {
 
   localStorage.setItem("feedback-form-state", JSON.stringify(feedback));
 }
+
+form.addEventListener('input', handleInput);
