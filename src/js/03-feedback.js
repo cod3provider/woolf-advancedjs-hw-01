@@ -9,15 +9,11 @@ if(localStorage.getItem("feedback-form-state")) {
 
 const feedback = {};
 
-const handleInput = () => {
-  const { email, message } = form.elements;
-
-  const feedback = {
-    email: email.value,
-    message: message.value,
-  }
-
-  console.log(feedback);
+const handleInput = e => {
+  const formData = new FormData(e.currentTarget);
+  formData.forEach((value, key) => {
+    feedback[key] = value;
+  })
 
   localStorage.setItem("feedback-form-state", JSON.stringify(feedback));
 }
